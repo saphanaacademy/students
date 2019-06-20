@@ -1,0 +1,14 @@
+ID: students
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: students-db
+    type: hdb
+    path: db
+    requires:
+      - name: students-hdi
+resources:
+  - name: students-hdi
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container

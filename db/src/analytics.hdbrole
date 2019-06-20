@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "students.db::analytics",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}]
+	}
+}

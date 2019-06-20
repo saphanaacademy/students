@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="students.db::Students" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Students"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="students.db::tables.Students">
+    <resourceUri>students.db::tables.Students</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="students.db::tables.Students">
+  <attributes>
+    <attribute id="name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="name"/>
+      <keyMapping columnObjectName="tables.Students" columnName="name"/>
+    </attribute>
+    <attribute id="site" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="site"/>
+      <keyMapping columnObjectName="tables.Students" columnName="site"/>
+    </attribute>
+    <attribute id="gender" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gender"/>
+      <keyMapping columnObjectName="tables.Students" columnName="gender"/>
+    </attribute>
+    <attribute id="age" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="age"/>
+      <keyMapping columnObjectName="tables.Students" columnName="age"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="score" order="5" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="score"/>
+      <measureMapping columnObjectName="tables.Students" columnName="score"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="Age">
+      <attributeRef xsi:type="DataFoundation:Attribute">age</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">name</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Age" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Age"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="age" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="age" sortDirection="ASC"/>
+            <level levelAttribute="name" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="name" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="Gender">
+      <attributeRef xsi:type="DataFoundation:Attribute">gender</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">name</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Gender" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Gender"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="gender" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="gender" sortDirection="ASC"/>
+            <level levelAttribute="name" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="name" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="Site">
+      <attributeRef xsi:type="DataFoundation:Attribute">site</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">name</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Site" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Site"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="site" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="site" sortDirection="ASC"/>
+            <level levelAttribute="name" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="name" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
